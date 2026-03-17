@@ -9,7 +9,14 @@ startBtn.addEventListener("click", () =>{
     setInterval(() => {
     
         secondsLeft -= 1;
-        timerText.textContent = secondsLeft;
+        minutesLeft = Math.floor(secondsLeft / 60);
+        secondsLeft2 = Math.floor(secondsLeft % 60);
+
+        if(secondsLeft2<10){
+            secondsLeft2 = "0" + secondsLeft2;
+        }
+
+        timerText.textContent = minutesLeft + ":" + secondsLeft2;
 
     }, 1000);
 
