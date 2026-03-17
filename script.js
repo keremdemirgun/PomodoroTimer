@@ -1,9 +1,12 @@
 const timerText = document.getElementById("timeText");
 const startBtn = document.getElementById("startBtn");
+const stopBtn = document.getElementById("stopBtn");
+const restartBtn = document.getElementById("restartBtn");
+
+let firstMinute = timerText.textContent; 
 
 let secondsLeft = (Number(timerText.textContent.slice(0,2))) * 60;
 let sayac = null;
-
 
 startBtn.addEventListener("click", () =>{
 
@@ -11,7 +14,6 @@ startBtn.addEventListener("click", () =>{
         clearInterval(sayac);
 
     }
-    
     
     sayac = setInterval(() => {
     
@@ -29,12 +31,25 @@ startBtn.addEventListener("click", () =>{
 
         }
         
-
-
         timerText.textContent = minutesLeft + ":" + secondsLeft2;
 
 
     }, 1000);
 
 
+});
+
+restartBtn.addEventListener("click", () =>{
+
+    clearInterval(sayac);
+    timerText.textContent = firstMinute;
+    secondsLeft = (Number(timerText.textContent.slice(0,2))) * 60;
+    sayac = null; 
+
+});
+
+stopBtn.addEventListener("click", () =>{
+
+    clearInterval(sayac);
+    sayac = null;
 })

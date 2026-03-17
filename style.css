@@ -26,3 +26,7 @@ body{
 .start{
     font-size: 2rem!important;
 }
+
+.btn{
+    margin: 5px!important;
+}
