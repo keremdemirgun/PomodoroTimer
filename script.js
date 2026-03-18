@@ -3,6 +3,10 @@ const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const restartBtn = document.getElementById("restartBtn");
 
+const gorevListesi = document.getElementById("gorev-listesi");
+const gorevText = document.getElementById("gorevText");
+const gorevEkleBtn = document.getElementById("gorevEkleBtn");
+
 let firstMinute = timerText.textContent; 
 
 let secondsLeft = (Number(timerText.textContent.slice(0,2))) * 60;
@@ -52,4 +56,17 @@ stopBtn.addEventListener("click", () =>{
 
     clearInterval(sayac);
     sayac = null;
-})
+});
+
+gorevEkleBtn.addEventListener("click", () =>{
+
+    let yeniGorev = gorevText.value;
+    if(yeniGorev == ""){
+        alert("Bir görev yazmalısın!");
+    }
+
+    else{
+        
+    }
+
+});
