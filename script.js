@@ -66,7 +66,11 @@ gorevEkleBtn.addEventListener("click", () =>{
     }
 
     else{
-        
+        let li = document.createElement("li");
+        li.textContent = gorevText.value;
+
+        gorevListesi.appendChild(li);
+        gorevText.value = "";
     }
 
 });
