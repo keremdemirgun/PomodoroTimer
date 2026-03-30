@@ -14,6 +14,23 @@ body{
     color: ;
 }
 
+.gorev-listesi{
+    list-style: none;
+    margin: auto;
+    align-items: center;
+}
+
+.task-add{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.task-control{
+    margin: auto;
+}
+
 .gorev-ekle{
     align-items: center;
 }
