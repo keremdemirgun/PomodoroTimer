@@ -61,6 +61,10 @@ stopBtn.addEventListener("click", () =>{
 gorevEkleBtn.addEventListener("click", () =>{
 
     let yeniGorev = gorevText.value;
+    let gorevsilBtn = document.createElement("button");
+    gorevsilBtn.textContent = "Sil";
+    gorevsilBtn.classList.add("btn", "btn-danger");
+
     if(yeniGorev == ""){
         alert("Bir görev yazmalısın!");
     }
@@ -70,6 +74,12 @@ gorevEkleBtn.addEventListener("click", () =>{
         li.textContent = gorevText.value;
 
         gorevListesi.appendChild(li);
+        gorevListesi.appendChild(gorevsilBtn);
+
+        gorevsilBtn.addEventListener("click", () =>{
+            gorevListesi.removeChild(li);
+            gorevListesi.removeChild(gorevsilBtn);
+        });
         gorevText.value = "";
     }
 
