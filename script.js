@@ -7,80 +7,65 @@ const gorevListesi = document.getElementById("gorev-listesi");
 const gorevText = document.getElementById("gorevText");
 const gorevEkleBtn = document.getElementById("gorevEkleBtn");
 
-let firstMinute = timerText.textContent; 
+let firstMinute = timerText.textContent;
 
-let secondsLeft = (Number(timerText.textContent.slice(0,2))) * 60;
+let secondsLeft = Number(timerText.textContent.slice(0, 2)) * 60;
 let sayac = null;
 
-startBtn.addEventListener("click", () =>{
+startBtn.addEventListener("click", () => {
+  if (sayac !== null) {
+    clearInterval(sayac);
+  }
 
-    if(sayac !== null){
+  sayac = setInterval(() => {
+    secondsLeft -= 1;
+    let minutesLeft = Math.floor(secondsLeft / 60);
+    let secondsLeft2 = Math.floor(secondsLeft % 60);
+
+    if (secondsLeft2 < 10) {
+      secondsLeft2 = "0" + secondsLeft2;
+
+      if (minutesLeft == 0 && secondsLeft2 == "00") {
         clearInterval(sayac);
-
-    }
-    
-    sayac = setInterval(() => {
-    
-        secondsLeft -= 1;
-        let minutesLeft = Math.floor(secondsLeft / 60);
-        let secondsLeft2 = Math.floor(secondsLeft % 60);
-
-        if(secondsLeft2<10){
-            secondsLeft2 = "0" + secondsLeft2;
-
-                if(minutesLeft == 0 && secondsLeft2 == "00" ){
-                    clearInterval(sayac);
-                    alert("Bitti!");
-                }
-
-        }
-        
-        timerText.textContent = minutesLeft + ":" + secondsLeft2;
-
-
-    }, 1000);
-
-
-});
-
-restartBtn.addEventListener("click", () =>{
-
-    clearInterval(sayac);
-    timerText.textContent = firstMinute;
-    secondsLeft = (Number(timerText.textContent.slice(0,2))) * 60;
-    sayac = null; 
-
-});
-
-stopBtn.addEventListener("click", () =>{
-
-    clearInterval(sayac);
-    sayac = null;
-});
-
-gorevEkleBtn.addEventListener("click", () =>{
-
-    let yeniGorev = gorevText.value;
-    let gorevsilBtn = document.createElement("button");
-    gorevsilBtn.textContent = "Sil";
-    gorevsilBtn.classList.add("btn", "btn-danger");
-
-    if(yeniGorev == ""){
-        alert("Bir görev yazmalısın!");
+        alert("Bitti!");
+      }
     }
 
-    else{
-        let li = document.createElement("li");
-        li.textContent = gorevText.value;
+    timerText.textContent = minutesLeft + ":" + secondsLeft2;
+  }, 1000);
+});
 
-        gorevListesi.appendChild(li);
-        gorevListesi.appendChild(gorevsilBtn);
+restartBtn.addEventListener("click", () => {
+  clearInterval(sayac);
+  timerText.textContent = firstMinute;
+  secondsLeft = Number(timerText.textContent.slice(0, 2)) * 60;
+  sayac = null;
+});
 
-        gorevsilBtn.addEventListener("click", () =>{
-            gorevListesi.removeChild(li);
-            gorevListesi.removeChild(gorevsilBtn);
-        });
-        gorevText.value = "";
-    }
+stopBtn.addEventListener("click", () => {
+  clearInterval(sayac);
+  sayac = null;
+});
 
+gorevEkleBtn.addEventListener("click", () => {
+  let yeniGorev = gorevText.value;
+  let gorevsilBtn = document.createElement("button");
+  gorevsilBtn.textContent = "Sil";
+  gorevsilBtn.classList.add("btn", "btn-danger");
+
+  if (yeniGorev == "") {
+    alert("Bir görev yazmalısın!");
+  } else {
+    let li = document.createElement("li");
+    li.textContent = gorevText.value;
+
+    gorevListesi.appendChild(li);
+    gorevListesi.appendChild(gorevsilBtn);
+
+    gorevsilBtn.addEventListener("click", () => {
+      gorevListesi.removeChild(li);
+      gorevListesi.removeChild(gorevsilBtn);
+    });
+    gorevText.value = "";
+  }
 });
