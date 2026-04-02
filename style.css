@@ -16,8 +16,17 @@ body{
 
 .gorev-listesi{
     list-style: none;
-    margin: auto;
     align-items: center;
+    margin: auto;
+    flex-direction: column;
+}
+
+.gorevler-container{
+    display: flex;
+}
+
+.sil-btn{
+    margin-left: 40px;
 }
 
 .task-add{
@@ -33,6 +42,7 @@ body{
 
 .gorev-ekle{
     align-items: center;
+    flex-shrink: 0;
 }
 
 .timer{

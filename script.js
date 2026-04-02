@@ -51,12 +51,13 @@ gorevEkleBtn.addEventListener("click", () => {
   let yeniGorev = gorevText.value;
   let gorevsilBtn = document.createElement("button");
   gorevsilBtn.textContent = "Sil";
-  gorevsilBtn.classList.add("btn", "btn-danger");
+  gorevsilBtn.classList.add("btn", "btn-danger", "sil-btn");
 
   if (yeniGorev == "") {
     alert("Bir görev yazmalısın!");
   } else {
     let li = document.createElement("li");
+    li.classList.add("gorevler-container");
     li.textContent = gorevText.value;
 
     gorevListesi.appendChild(li);
