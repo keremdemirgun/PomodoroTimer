@@ -60,12 +60,11 @@ gorevEkleBtn.addEventListener("click", () => {
     li.classList.add("gorevler-container");
     li.textContent = gorevText.value;
 
+    li.appendChild(gorevsilBtn);
     gorevListesi.appendChild(li);
-    gorevListesi.appendChild(gorevsilBtn);
 
     gorevsilBtn.addEventListener("click", () => {
       gorevListesi.removeChild(li);
-      gorevListesi.removeChild(gorevsilBtn);
     });
     gorevText.value = "";
   }
