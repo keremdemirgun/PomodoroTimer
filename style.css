@@ -11,7 +11,7 @@ body{
 .giris{
     font-size: 2rem;
     font-weight: 500;
-    color: ;
+
 }
 
 .gorev-listesi{
@@ -23,6 +23,7 @@ body{
 
 .gorevler-container{
     display: flex;
+    justify-content: space-between;
 }
 
 .sil-btn{
