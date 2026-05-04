@@ -3,11 +3,16 @@ const startBtn = document.getElementById("startBtn");
 const stopBtn = document.getElementById("stopBtn");
 const restartBtn = document.getElementById("restartBtn");
 
+let remaningTime = localStorage.getItem("remaningTime");
+console.log(remaningTime);
+timerText.textContent = remaningTime ? remaningTime : "25:00";
+
+  
 const gorevListesi = document.getElementById("gorev-listesi");
 const gorevText = document.getElementById("gorevText");
 const gorevEkleBtn = document.getElementById("gorevEkleBtn");
 
-let firstMinute = timerText.textContent;
+let firstMinute = remaningTime;
 
 let secondsLeft = Number(timerText.textContent.slice(0, 2)) * 60;
 let sayac = null;
@@ -45,6 +50,7 @@ restartBtn.addEventListener("click", () => {
 stopBtn.addEventListener("click", () => {
   clearInterval(sayac);
   sayac = null;
+  localStorage.setItem("remaningTime", timerText.textContent);
 });
 
 gorevEkleBtn.addEventListener("click", () => {
